@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FirstFit_Algorithim
 {
-    public class FirstFitAlgorithim
+    public class GreedyColoringAlgorithims
     {
         public int FirstFit(Graph G)
         {
