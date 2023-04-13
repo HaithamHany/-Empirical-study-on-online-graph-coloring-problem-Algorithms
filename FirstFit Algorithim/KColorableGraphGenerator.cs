@@ -13,12 +13,12 @@ namespace FirstFit_Algorithim
         /// </summary>
         /// <param name="n">number of vertices</param>
         /// <param name="k">number of colors</param>
-        /// <param name="p">probability of choosing edges</param>
         /// <param name="N">number of graphs to generate</param>
         /// <exception cref="Exception"></exception>
-        public List<Graph> GenerateGraphs(int n, int k, double p, int N)
+        public List<Graph> GenerateGraphs(int n, int k, int N)
         {
             var graphs = new List<Graph>();
+            double p = 0.5d; //probability of choosing edges
 
             for (int t = 0; t < N; t++)
             {
@@ -47,13 +47,15 @@ namespace FirstFit_Algorithim
                     }
                 }
 
-                // generate edges with probability p
+            
+                //Initialize 
                 bool[][] adjacency = new bool[n][];
                 for (int i = 0; i < n; i++)
                 {
                     adjacency[i] = new bool[n];    
                 }
 
+                // generate edges with probability p
                 for (int i = 0; i < n; i++)
                 {
                     for (int j = i + 1; j < n; j++)
