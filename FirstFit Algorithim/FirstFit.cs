@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FirstFit_Algorithim
 {
-    public class GreedyColoringAlgorithims
+    public class FirstFit
     {
-        public int FirstFit(Graph G)
+        public int GetColorsUsed(Graph G)
         {
             // Initialize an array to keep track of the colors assigned to each vertex
             int[] colors = new int[G.NumVertices];
