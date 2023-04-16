@@ -20,21 +20,26 @@
             KColorableGraphGenerator generator = new KColorableGraphGenerator();
             var graphs = generator.GenerateGraphs(n, k, N);
             var firstFitResults = new List<double>();
+            var CBIP_Results = new List<double>();
      
             // print the graphs for verification
            foreach (Graph graph in graphs)
            {
-                var algorithims = new GreedyColoringAlgorithims();
-                var FirstFitResult = algorithims.FirstFit(graph);
+                var firstFit = new FirstFit();
+                var FirstFitResult = firstFit.GetColorsUsed(graph);
                 firstFitResults.Add(FirstFitResult);
-           }
 
-            Console.WriteLine($"The average competitve ratio is {CalculateAverageCompetitiveRatio(k, firstFitResults)}");
+                var cbip = new CBIP(graph);
+                var cbip_result = cbip.GetColorsUsed();
+                CBIP_Results.Add(cbip_result);
+            }
+
+            Console.WriteLine($"AVG Comp. ratio  FirstFit: {CalculateAverageCompetitiveRatio(N, k, firstFitResults)}");
+            Console.WriteLine($"AVG Comp ratio  CBIP {CalculateAverageCompetitiveRatio(N, k, CBIP_Results)}");
         }
 
-        static double CalculateAverageCompetitiveRatio(int current_k, List<double> algorithmColorsUsed)
+        static double CalculateAverageCompetitiveRatio(int N, int current_k, List<double> algorithmColorsUsed)
         {
-            int N = 100; // Total number of graphs
             double sumOfCompetitiveRatios = 0;
 
             for (int i = 0; i < N; i++)

@@ -37,5 +37,11 @@ namespace FirstFit_Algorithim
             adjacencyList[i].Add(j);
             adjacencyList[j].Add(i);
         }
+
+        public List<int> GetNeighbors(int vertex)
+        {
+            return adjacencyList[vertex];
+        }
+
     }
 }
